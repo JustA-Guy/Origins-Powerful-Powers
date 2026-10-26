@@ -1,0 +1,7 @@
+accessWidener	v2	named
+
+# FeedbackWhitelist: a gamerule holding a list of usernames needs its own GameRules.Type (vanilla only builds boolean
+# and integer ones, and Fabric's GameRuleFactory has no string type). Fabric's own widener opens these at runtime,
+# but it isn't transitive, so OPP needs them for compiling too.
+accessible	class	net/minecraft/world/level/GameRules$VisitorCaller
+accessible	method	net/minecraft/world/level/GameRules$Type	<init>	(Ljava/util/function/Supplier;Ljava/util/function/Function;Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/GameRules$VisitorCaller;)V

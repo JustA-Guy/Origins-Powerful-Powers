@@ -1,0 +1,43 @@
+{
+  "type": "origins:active_self",
+  "hidden": true,
+  "key": {
+    "key": "key.origins.primary_active"
+  },
+  "cooldown": 5,
+  "condition": {
+    "type": "origins:and",
+    "conditions": [
+      {
+        "type": "origins:equipped_item",
+        "equipment_slot": "mainhand",
+        "item_condition": {
+          "type": "origins:ingredient",
+          "ingredient": {
+            "item": "minecraft:emerald"
+          }
+        }
+      },
+      {
+        "type": "origins:sneaking",
+        "inverted": true
+      }
+    ]
+  },
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:equipped_item_action",
+        "equipment_slot": "mainhand",
+        "action": {
+          "type": "origins:consume",
+          "amount": 1
+        }
+      },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "coins",        "operation": "add", "value": 10 },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "deposited",    "operation": "add", "value": 10 },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "bigDepositor", "operation": "set", "value": "bigDepositor || deposited >= 640" }
+    ]
+  }
+}

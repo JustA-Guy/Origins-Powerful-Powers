@@ -1,0 +1,17 @@
+{
+  "type": "origins:action_over_time",
+  "hidden": true,
+  "interval": 6000,
+  "condition": {
+    "type": "origins:resource",
+    "resource": "opp_savings:balance_bar",
+    "comparison": ">=",
+    "compare_to": 100
+  },
+  "entity_action": {
+    "type": "origins:change_resource",
+    "resource": "opp_savings:balance_bar",
+    "change": 1,
+    "operation": "add"
+  }
+}

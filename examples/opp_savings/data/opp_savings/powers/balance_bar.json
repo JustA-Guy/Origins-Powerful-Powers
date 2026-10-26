@@ -1,0 +1,11 @@
+{
+  "type": "origins-powerful-powers:variable_bar",
+  "name": "Savings",
+  "variable": "coins",
+  "min": 0,
+  "max": 10000,
+  "hud_render": {
+    "should_render": true,
+    "bar_index": 0
+  }
+}

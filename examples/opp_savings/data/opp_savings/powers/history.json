@@ -1,0 +1,8 @@
+{
+  "type": "origins-powerful-powers:list",
+  "hidden": true,
+  "variable": "history",
+  "element_type": "long",
+  "max_size": 12,
+  "when_full": "drop_oldest"
+}

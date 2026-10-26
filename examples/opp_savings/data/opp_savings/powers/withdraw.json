@@ -1,0 +1,66 @@
+{
+  "type": "origins:active_self",
+  "hidden": true,
+  "key": {
+    "key": "key.origins.secondary_active"
+  },
+  "cooldown": 5,
+  "entity_action": {
+    "type": "origins:if_else",
+    "condition": {
+      "type": "origins:sneaking"
+    },
+    "if_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins-powerful-powers:modify_variable",
+          "variable": "frozen",
+          "operation": "xor",
+          "value": true
+        },
+        {
+          "type": "origins-powerful-powers:execute",
+          "code": [
+            "// freezing halves the streak (int division rounds down)",
+            "streak -= frozen ? streak / 2 : 0;"
+          ]
+        }
+      ]
+    },
+    "else_action": {
+      "type": "origins:if_else",
+      "condition": {
+        "type": "origins-powerful-powers:expression",
+        "expression": "coins >= 10 && !frozen"
+      },
+      "if_action": {
+        "type": "origins:and",
+        "actions": [
+          {
+            "type": "origins-powerful-powers:execute",
+            "code": [
+              "coins -= 10;",
+              "withdrawn += 10;",
+              "",
+              "// withdrawing costs up to 3 streak periods and half the partial coin",
+              "streak -= Math.min(streak, 3);",
+              "fraction /= 2;",
+              "",
+              "tier = coins >= 10_000L ? \"gold\"",
+              "     : coins >= 1_000L  ? \"silver\"",
+              "     :                    \"basic\";"
+            ]
+          },
+          {
+            "type": "origins:give",
+            "stack": {
+              "item": "minecraft:emerald",
+              "amount": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}

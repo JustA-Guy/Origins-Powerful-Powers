@@ -1,0 +1,44 @@
+{
+	"required": true,
+	"package": "net.users.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"ArrowCritMixin",
+		"ChunkMapAccessor",
+		"CooldownInstanceAccessor",
+		"EntityAccessor",
+		"FakeBlockSendMixin",
+		"FeedbackWhitelistAdminMixin",
+		"FeedbackWhitelistEntityMixin",
+		"FoodDataAccessor",
+		"ItemCooldownsAccessor",
+		"LivingEntityAccessor",
+		"LivingEntityAttributesMixin",
+		"LivingEntityDragMixin",
+		"LivingEntityHurtMixin",
+		"LivingEntityKnockbackMixin",
+		"MobAccessor",
+		"FakeEntityAttackMixin",
+		"FakeEntityGuardBrainMixin",
+		"FakeEntityGuardEntityMixin",
+		"FakeEntityGuardLevelMixin",
+		"FakeEntityGuardLivingEntityMixin",
+		"FakeEntityGuardMobMixin",
+		"FakeEntityGuardServerLevelMixin",
+		"PlayerInfoEntriesAccessor",
+		"PlayerAttackReachMixin",
+		"PlayerAttributesMixin",
+		"PlayerCritMixin",
+		"PlayerMaskSendMixin",
+		"ServerEntityDisguiseMixin",
+		"ServerboundInteractPacketAccessor",
+		"TeamPacketInvoker",
+		"TrackedEntityDisguiseMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

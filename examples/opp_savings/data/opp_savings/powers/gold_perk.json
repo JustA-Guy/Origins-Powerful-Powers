@@ -1,0 +1,14 @@
+{
+  "type": "origins:conditioned_attribute",
+  "hidden": true,
+  "modifier": {
+    "attribute": "minecraft:generic.luck",
+    "operation": "addition",
+    "value": 1,
+    "name": "Savings: gold tier"
+  },
+  "condition": {
+    "type": "origins-powerful-powers:expression",
+    "expression": "tier.equals(\"gold\") || reached10000"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "type": "origins:active_self",
+  "hidden": true,
+  "key": {
+    "key": "key.origins.primary_active"
+  },
+  "cooldown": 40,
+  "condition": {
+    "type": "origins:sneaking"
+  },
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins-powerful-powers:with_variables",
+        "action": {
+          "type": "origins:execute_command",
+          "command": "tellraw @s {\"text\":\"Savings: ${coins} coins (${tier}), last ${history.size()} payouts:\",\"color\":\"gold\"}"
+        }
+      },
+      {
+        "type": "origins-powerful-powers:for_each_read",
+        "list": "history",
+        "action": {
+          "type": "origins:and",
+          "actions": [
+            {
+              "type": "origins-powerful-powers:with_variables",
+              "action": {
+                "type": "origins:execute_command",
+                "command": "tellraw @s {\"text\":\"  #${index + 1}: +${value} coins\",\"color\":\"${value >= 25 ? \"green\" : \"gray\"}\"}"
+              }
+            },
+            {
+              "type": "origins:if_else",
+              "condition": {
+                "type": "origins-powerful-powers:expression",
+                "expression": "value >= 25"
+              },
+              "if_action": {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:happy_villager ~ ~2.2 ~ 0.4 0.2 0.4 0 4"
+              },
+              "else_action": {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:smoke ~ ~2.2 ~ 0.4 0.2 0.4 0 4"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

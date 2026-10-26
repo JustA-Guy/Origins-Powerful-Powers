@@ -1,0 +1,19 @@
+{
+  "type": "origins:action_over_time",
+  "hidden": true,
+  "interval": 100,
+  "condition": {
+    "type": "origins-powerful-powers:expression",
+    "expression": "powers.size() >= 10 && !powers.contains(\"origins:invisibility\")"
+  },
+  "entity_action": {
+    "type": "origins:apply_effect",
+    "effect": {
+      "effect": "minecraft:glowing",
+      "duration": 110,
+      "amplifier": 0,
+      "show_particles": false,
+      "show_icon": true
+    }
+  }
+}

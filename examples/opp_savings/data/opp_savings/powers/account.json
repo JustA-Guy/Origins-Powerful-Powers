@@ -1,0 +1,24 @@
+{
+  "type": "origins-powerful-powers:variables",
+  "name": "Savings Account",
+  "description": "Earns compound interest every minute. Primary key deposits the emerald in your hand, secondary key withdraws one, sneak + secondary freezes the account.",
+  "fields": [
+    "long coins = 0;              // whole coins, always rounded down",
+    "double fraction = 0.0;       // the part below one coin, carried between periods",
+    "double baseRate = 0.02;      // 2% per period",
+    "double streakBonus = 0.0;    // extra rate for unbroken periods",
+    "int periods = 0;",
+    "int streak = 0;",
+    "long deposited = 0;",
+    "long withdrawn = 0;",
+    "long lastBalance = 0;        // coins before this period's interest",
+    "boolean frozen = false;",
+    "String tier = \"basic\";",
+    "",
+    "// milestones: once true, they stay true",
+    "boolean reached1000 = false;",
+    "boolean reached10000 = false;",
+    "boolean fullYear = false;    // 12 interest periods",
+    "boolean bigDepositor = false; // 64 emeralds deposited in total"
+  ]
+}

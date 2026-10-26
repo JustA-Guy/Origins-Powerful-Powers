@@ -1,0 +1,29 @@
+{
+  "type": "origins:action_over_time",
+  "hidden": true,
+  "interval": 100,
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins-powerful-powers:execute",
+        "code": [
+          "// powers is read fresh right now: the powers held at this moment",
+          "total = powers.size();",
+          "canFly = powers.contains(\"origins:elytra\");",
+          "fromOrigins = 0;"
+        ]
+      },
+      {
+        "type": "origins-powerful-powers:for_each_read",
+        "list": "powers",
+        "action": {
+          "type": "origins-powerful-powers:modify_variable",
+          "variable": "fromOrigins",
+          "operation": "add",
+          "value": "value.startsWith(\"origins:\") ? 1 : 0"
+        }
+      }
+    ]
+  }
+}

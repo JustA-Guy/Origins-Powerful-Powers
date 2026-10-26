@@ -1,0 +1,50 @@
+{
+  "type": "origins:action_on_hit",
+  "hidden": true,
+  "cooldown": 20,
+  "bientity_condition": {
+    "type": "origins:and",
+    "conditions": [
+      {
+        "type": "origins:target_condition",
+        "condition": {
+          "type": "origins:power",
+          "power": "opp_savings:account"
+        }
+      },
+      {
+        "type": "origins-powerful-powers:expression",
+        "expression": [
+          "coins / 100 > 0",
+          "&& !self.frozen",
+          "&& !other.frozen"
+        ]
+      }
+    ]
+  },
+  "bientity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins-powerful-powers:modify_variable",
+        "variable": "other.coins",
+        "operation": "add",
+        "value": "coins / 100"
+      },
+      {
+        "type": "origins-powerful-powers:modify_variable",
+        "variable": "coins",
+        "operation": "subtract",
+        "value": "coins / 100"
+      },
+      {
+        "type": "origins-powerful-powers:execute",
+        "code": [
+          "other.tier = other.coins >= 10_000L ? \"gold\"",
+          "           : other.coins >= 1_000L  ? \"silver\"",
+          "           :                          \"basic\";"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "origins-powerful-powers:variables",
+  "hidden": true,
+  "fields": [
+    "int total = 0;          // how many (visible) powers the player has",
+    "int fromOrigins = 0;    // how many of them come from the origins namespace",
+    "boolean canFly = false; // has origins:elytra"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "type": "origins:action_over_time",
+  "hidden": true,
+  "interval": 1200,
+  "condition": {
+    "type": "origins-powerful-powers:expression",
+    "expression": "!frozen && coins + fraction > 0"
+  },
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      { "type": "origins-powerful-powers:modify_variable", "variable": "lastBalance", "operation": "set",      "value": "coins" },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "streakBonus", "operation": "set",      "value": "Math.min(streak, 10) * 0.001" },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "fraction",    "operation": "add",      "value": "coins" },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "fraction",    "operation": "multiply", "value": "1 + baseRate + streakBonus" },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "coins",       "operation": "set",      "value": "(long) Math.floor(fraction)" },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "fraction",    "operation": "subtract", "value": "coins" },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "periods",     "operation": "add",      "value": 1 },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "streak",      "operation": "add",      "value": 1 },
+      { "type": "origins-powerful-powers:modify_variable", "variable": "streak",      "operation": "min",      "value": 100 },
+      {
+        "type": "origins-powerful-powers:execute",
+        "code": [
+          "tier = coins >= 10_000L ? \"gold\"",
+          "     : coins >= 1_000L  ? \"silver\"",
+          "     :                    \"basic\";",
+          "",
+          "// milestones stay true once reached",
+          "reached1000  = reached1000  || coins >= 1_000L;",
+          "reached10000 = reached10000 || coins >= 10_000L;",
+          "fullYear     = fullYear     || periods >= 12;",
+          "",
+          "// record this period's payout; history keeps the last 12 (drop_oldest)",
+          "history.add(coins - lastBalance);"
+        ]
+      }
+    ]
+  }
+}

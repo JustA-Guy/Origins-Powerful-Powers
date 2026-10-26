@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "origins-powerful-powers",
+	"version": "${version}",
+	"name": "Origins: Powerful Powers",
+	"description": "Adds a ton of functionality to origins in various ways.",
+	"authors": [
+		"UsernamesRHard"
+	],
+	"contact": {
+		"homepage": "https://tma.usernames.uk/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/origins-powerful-powers/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.users.OriginsPowerfulPowers"
+		],
+		"voicechat": [
+			"net.users.compat.svc.OppVoicechatPlugin"
+		]
+	},
+	"accessWidener": "origins-powerful-powers.accesswidener",
+	"mixins": [
+		"origins-powerful-powers.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"origins": ">=1.10.0"
+	},
+	"suggests": {
+		"voicechat": "*",
+		"hardcorerevival": "*",
+		"styled-nicknames": "*"
+	}
+}
